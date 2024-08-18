@@ -85,7 +85,7 @@ export const TodoList: React.FC = () => {
 
   return (
     <div className="todo-list">
-      <h1 className="todo-title">Welcome to my todo app</h1>
+      <h1 className="todo-title">Welcome to my todo app! :)</h1>
       <div className="add-task">
         <Input
           type="text"
