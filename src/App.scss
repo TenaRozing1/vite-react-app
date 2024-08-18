@@ -51,7 +51,19 @@ header {
       border-radius: 4px;
       border: 1px solid #ccc;
       background-color: #f4f4f4;
+      color: #333;
       outline: none;
+
+      &::placeholder {
+        color: #949393;
+        font-style: italic;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: #28a745;
+        box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.2);
+      }
     }
 
     button {
@@ -91,7 +103,6 @@ header {
       color: #333;
 
       .todo-item {
-
         span {
           margin-right: 15px;
         }
