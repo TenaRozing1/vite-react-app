@@ -42,9 +42,6 @@ header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-
-   
-    
   }
 
   .task-actions {
@@ -70,15 +67,15 @@ header {
       color: #333;
 
       .todo-item {
+        margin-right: 15px;
         span {
-          margin-right: 15px;
+          margin-left: 10px;
         }
         &.completed {
           text-decoration: line-through;
           color: #999;
         }
       }
-      
     }
   }
 }

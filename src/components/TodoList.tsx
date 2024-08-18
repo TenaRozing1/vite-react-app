@@ -1,7 +1,8 @@
-import React, { useState, ChangeEvent } from "react";
-import { TodoItem } from "./ToDoItem";
-import Button from "./button-component/Button";
-import Input from "./input-component/Input";
+import React, { useState, ChangeEvent } from 'react';
+import { TodoItem } from './TodoItem';
+import Button from './button-component/Button';
+import Input from './input-component/Input';
+
 interface Todo {
   id: number;
   task: string;
@@ -45,7 +46,6 @@ export const TodoList: React.FC = () => {
         `https://dummyjson.com/todos?limit=${numTasksToAdd}`
       );
       const data = await response.json();
-      console.log(data);
       const apiTodos = data.todos.map((todo: any) => ({
         id: todo.id,
         task: todo.todo,
@@ -109,13 +109,25 @@ export const TodoList: React.FC = () => {
         </Button>
       </div>
       <div className="task-actions">
-        <Button onClick={deleteAllTasks} color="secondary">
+        <Button
+          onClick={deleteAllTasks}
+          color="secondary"
+          disabled={todos.length === 0} // Disable button if no tasks to delete
+        >
           Delete All Tasks
         </Button>
-        <Button onClick={deleteManualTasks} color="secondary">
+        <Button
+          onClick={deleteManualTasks}
+          color="secondary"
+          disabled={todos.every(todo => todo.fromAPI)} // Disable button if all tasks are from API
+        >
           Delete Manual Tasks
         </Button>
-        <Button onClick={deleteAPITasks} color="secondary">
+        <Button
+          onClick={deleteAPITasks}
+          color="secondary"
+          disabled={todos.every(todo => !todo.fromAPI)} // Disable button if all tasks are manual
+        >
           Delete API Tasks
         </Button>
       </div>

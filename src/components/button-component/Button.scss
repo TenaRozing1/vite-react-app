@@ -4,8 +4,10 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+  text-align: center;
+  font-size: 14px;
 
-  &--primary {
+  &.btn--primary {
     background-color: #28a745;
     color: #fff;
 
@@ -14,12 +16,22 @@
     }
   }
 
-  &--secondary {
+  &.btn--secondary {
     background-color: #dc3545;
     color: #fff;
 
     &:hover {
       background-color: #c82333;
+    }
+  }
+
+  &.btn--disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: #ccc;
     }
   }
 }
