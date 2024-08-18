@@ -6,6 +6,7 @@
   border: 1px solid #ccc;
   transition: border-color 0.3s, box-shadow 0.3s;
   background-color: #f4f4f4;
+  color: #aaa;
 
   &::placeholder {
     color: #aaa;
@@ -14,7 +15,7 @@
 
   &:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #28a745;
     box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.2);
   }
 }
