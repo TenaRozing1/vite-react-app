@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { TodoItem } from "./ToDoItem";
-
+import Button from "./button-component/Button";
+import Input from "./input-component/Input";
 interface Todo {
   id: number;
   task: string;
@@ -27,18 +28,24 @@ export const TodoList: React.FC = () => {
   };
 
   const toggleTask = (id: number) => {
-    setTodos(todos.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo));
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
   };
 
   const deleteTask = (id: number) => {
-    setTodos(todos.filter(todo => todo.id !== id));
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   const addTasksFromAPI = async () => {
     try {
-      const response = await fetch(`https://dummyjson.com/todos?limit=${numTasksToAdd}`);
+      const response = await fetch(
+        `https://dummyjson.com/todos?limit=${numTasksToAdd}`
+      );
       const data = await response.json();
-      console.log(data)
+      console.log(data);
       const apiTodos = data.todos.map((todo: any) => ({
         id: todo.id,
         task: todo.todo,
@@ -59,40 +66,58 @@ export const TodoList: React.FC = () => {
   };
 
   const deleteManualTasks = () => {
-    setTodos(todos.filter(todo => todo.fromAPI));
+    setTodos(todos.filter((todo) => todo.fromAPI));
   };
 
   const deleteAPITasks = () => {
-    setTodos(todos.filter(todo => !todo.fromAPI));
+    setTodos(todos.filter((todo) => !todo.fromAPI));
   };
 
-  const completedTasksCount = todos.filter(todo => todo.completed).length;
+  const completedTasksCount = todos.filter((todo) => todo.completed).length;
+
+  const handleNewTaskChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setNewTask(e.target.value);
+  };
+
+  const handleNumTasksChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setNumTasksToAdd(Number(e.target.value));
+  };
 
   return (
     <div className="todo-list">
       <h1 className="todo-title">Welcome to my todo app</h1>
       <div className="add-task">
-        <input
+        <Input
           type="text"
           value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
+          onChange={handleNewTaskChange}
           placeholder="Add a new task"
         />
-        <button onClick={addTask}>Add Task</button>
+        <Button onClick={addTask} color="primary">
+          Add Task
+        </Button>
       </div>
       <div className="api-tasks">
-        <input
+        <Input
           type="number"
           value={numTasksToAdd}
-          onChange={(e) => setNumTasksToAdd(Number(e.target.value))}
+          onChange={handleNumTasksChange}
           placeholder="Number of API tasks"
         />
-        <button onClick={addTasksFromAPI}>Add Tasks from API</button>
+        <Button onClick={addTasksFromAPI} color="primary">
+          Add Tasks from API
+        </Button>
       </div>
       <div className="task-actions">
-        <button onClick={deleteAllTasks}>Delete All Tasks</button>
-        <button onClick={deleteManualTasks}>Delete Manual Tasks</button>
-        <button onClick={deleteAPITasks}>Delete API Tasks</button>
+        <Button onClick={deleteAllTasks} color="secondary">
+          Delete All Tasks
+        </Button>
+        <Button onClick={deleteManualTasks} color="secondary">
+          Delete Manual Tasks
+        </Button>
+        <Button onClick={deleteAPITasks} color="secondary">
+          Delete API Tasks
+        </Button>
       </div>
       <p>Completed Tasks: {completedTasksCount}</p>
       <div className="tasks">
