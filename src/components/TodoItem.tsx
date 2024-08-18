@@ -7,7 +7,12 @@ interface TodoItemProps {
   onDelete: () => void;
 }
 
-export const TodoItem: React.FC<TodoItemProps> = ({ task, completed, onToggle, onDelete }) => {
+export const TodoItem: React.FC<TodoItemProps> = ({
+  task,
+  completed,
+  onToggle,
+  onDelete,
+}) => {
   const checkboxRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -17,9 +22,11 @@ export const TodoItem: React.FC<TodoItemProps> = ({ task, completed, onToggle, o
   }, [completed]);
 
   return (
-    <div className={`todo-item ${completed ? 'completed' : ''}`}>
-      <input type="checkbox" ref={checkboxRef} onChange={onToggle} />
-      <span>{task}</span>
+    <div className="todos">
+      <div className={`todo-item ${completed ? "completed" : ""}`}>
+        <input type="checkbox" ref={checkboxRef} onChange={onToggle} />
+        <span>{task}</span>
+      </div>
       <button onClick={onDelete}>Remove</button>
     </div>
   );
