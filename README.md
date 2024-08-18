@@ -1,50 +1,25 @@
-# React + TypeScript + Vite
+# Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This is a simple **Todo List** application built using React. The app allows users to add, delete, and manage their tasks. Additionally, tasks can be fetched from an external API, and users can manage these tasks alongside their manually added ones.
 
-Currently, two official plugins are available:
+## Features
+- **Add New Task:** Users can add new tasks to their todo list.
+- **Delete Tasks:** Users can delete individual tasks, all tasks, or tasks fetched from an API.
+- **API Integration:** The app allows fetching a specified number of tasks from a third-party API.
+- **Task Completion:** Users can mark tasks as completed or not completed.
+- **Responsive Design:** The app is fully responsive and works on all screen sizes.
+- **Validation:** The app includes input validation with alerts for empty task entries and invalid numbers for fetching tasks from the API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
 
-## Expanding the ESLint configuration
+### Prerequisites
+Before you begin, ensure you have met the following requirements:
+- You have installed the latest version of [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/).
+- You have a basic understanding of JavaScript, React, and Node.js.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Steps
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/TenaRozing1/vite-react-app.git
